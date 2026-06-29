@@ -1,0 +1,146 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+}
+
+/* HEADER */
+
+header{
+    background:#0d2ecf;
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.buscador input{
+    width:300px;
+    padding:8px;
+}
+
+/* SUPERIOR */
+
+.principal{
+    display:flex;
+    padding:20px;
+    gap:20px;
+}
+
+.mas-vendido{
+    width:20%;
+}
+
+.libro-destacado{
+    border:1px solid #ccc;
+    padding:10px;
+    background:white;
+    text-align:center;
+}
+
+.libro-destacado img{
+    width:100px;
+}
+
+.novedades{
+    width:80%;
+}
+
+.novedades img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+/* BANNERS */
+
+.banners{
+    display:flex;
+    gap:80px;
+    padding:20px;
+}
+
+.banners img{
+    width:50%;
+    height:120px;
+    object-fit:cover;
+}
+
+/* CONTENIDO */
+
+.contenido{
+    display:flex;
+    padding:20px;
+    gap:20px;
+}
+
+/* MENU IZQUIERDO */
+
+aside{
+    width:220px;
+}
+
+aside h2{
+    margin-bottom:15px;
+}
+
+aside ul{
+    list-style:none;
+    border:1px solid #ccc;
+    background:white;
+    margin-bottom:20px;
+}
+
+aside li{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+
+aside select{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+/* PRODUCTOS */
+
+main{
+    flex:1;
+}
+
+.titulo-productos{
+    margin-bottom:20px;
+}
+
+.productos{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:center;
+}
+
+.card img{
+    width:120px;
+    height:180px;
+    object-fit:cover;
+}
+
+.card p{
+    margin-top:10px;
+}
+
+.foot{
+    background-color: grey;
+}

@@ -1,0 +1,75 @@
+@media (max-width: 768px){
+
+    /* HEADER */
+
+    header{
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        display:block;
+    }
+
+    .buscador input{
+        width: 100%;
+    }
+
+    /* SECCIÓN SUPERIOR */
+
+    .principal{
+        flex-direction: column;
+        display: block;
+    }
+
+    .mas-vendido{
+        width: 100%;
+    }
+
+    .novedades{
+        width: 100%;
+    }
+
+    .novedades img{
+        height: auto;
+    }
+
+    /* BANNERS */
+
+    .banners{
+        flex-direction: column;
+    }
+
+    .banners img{
+        width: 100%;
+    }
+
+    /* CONTENIDO */
+
+    .contenido{
+        flex-direction: column;
+    }
+
+    /* CATEGORÍAS */
+
+    aside{
+        width: 100%;
+    }
+
+    /* PRODUCTOS */
+
+    .productos{
+        grid-template-columns: 1fr;
+    }
+
+    .card{
+        width: 100%;
+    }
+
+    .card img{
+        width: 140px;
+        height: auto;
+    }
+
+    .titulo-productos{
+        text-align: center;
+    }
+}
