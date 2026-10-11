@@ -1,0 +1,330 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --azul: #2741f5;
+    --azul-oscuro: #1b2ec4;
+    --naranja: #ff5a36;
+    --amarillo: #ffd23a;
+    --texto: #1d2433;
+    --suave: #667085;
+    --linea: #e7e9f2;
+    --fondo: #f5f7fb;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+.panel {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+}
+
+.menu {
+    background: var(--azul);
+    color: white;
+    min-height: 100vh;
+    padding: 28px 18px;
+}
+
+.menu__marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    text-decoration: none;
+}
+
+.menu__marca svg {
+    width: 36px;
+    height: 30px;
+    flex: none;
+}
+
+.menu__rol {
+    margin: 18px 0 22px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.menu nav {
+    display: grid;
+    gap: 6px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.menu a.is-activa {
+    background: white;
+    color: var(--azul);
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 28px;
+    background: white;
+    border-bottom: 1px solid var(--linea);
+}
+
+.quien {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.quien__icono {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #eef2ff;
+    flex: none;
+}
+
+.quien__icono svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: var(--azul);
+    stroke-width: 1.8;
+}
+
+.quien__datos {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    min-width: 0;
+}
+
+.quien__datos strong {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+.quien__datos span {
+    margin-top: 4px;
+    color: var(--suave);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.barra button {
+    border: 0;
+    border-radius: 999px;
+    background: #fff1ec;
+    color: #e24b32;
+    padding: 10px 16px;
+    font-weight: 700;
+    cursor: pointer;
+    flex: none;
+}
+
+.barra button:hover {
+    background: var(--naranja);
+    color: white;
+}
+
+main {
+    padding: 28px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    margin-bottom: 16px;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 12px;
+    background: white;
+    border: 1px solid var(--linea);
+    border-radius: 18px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.filtros label {
+    display: grid;
+    gap: 6px;
+    color: var(--suave);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.filtros .buscar {
+    flex: 1 1 240px;
+}
+
+.filtros input,
+.filtros select {
+    width: 100%;
+    min-width: 150px;
+    border: 1px solid var(--linea);
+    border-radius: 12px;
+    background: white;
+    color: var(--texto);
+    padding: 10px 12px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+}
+
+.filtros input {
+    border-radius: 999px;
+    padding-left: 16px;
+}
+
+#limpiar {
+    border: 1px solid var(--azul);
+    border-radius: 999px;
+    background: white;
+    color: var(--azul);
+    padding: 10px 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#limpiar:hover {
+    background: var(--azul);
+    color: white;
+}
+
+.conteo {
+    color: var(--suave);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.tabla-wrap {
+    background: white;
+    border-radius: 18px;
+    overflow: auto;
+    border: 1px solid var(--linea);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eef0f6;
+}
+
+th {
+    font-size: 13px;
+    color: var(--suave);
+    font-weight: 700;
+    background: #f4f6fb;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.paginacion button {
+    min-width: 40px;
+    height: 40px;
+    border: 1px solid var(--linea);
+    border-radius: 12px;
+    background: white;
+    color: var(--texto);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.paginacion button.is-activa {
+    background: var(--azul);
+    border-color: var(--azul);
+    color: white;
+}
+
+.paginacion__flecha {
+    display: grid;
+    place-items: center;
+    padding: 0;
+}
+
+.paginacion__flecha svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.paginacion button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+@media (max-width: 800px) {
+    .panel {
+        grid-template-columns: 1fr;
+    }
+
+    .menu {
+        min-height: 0;
+    }
+
+    .barra,
+    main {
+        padding: 16px;
+    }
+
+    .quien__datos strong {
+        font-size: 18px;
+    }
+}

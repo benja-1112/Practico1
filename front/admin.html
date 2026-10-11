@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel | Book-e</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/admin.css?v=3">
+</head>
+<body class="panel" hidden>
+    <aside class="menu">
+        <a class="menu__marca" href="index.html" aria-label="Book-e">
+            <svg viewBox="0 0 48 40" aria-hidden="true">
+                <path fill="#ff5a36" d="M8 8h14c4 0 7 3 7 8v18c-4-2-8-3-12-3H8V8z"></path>
+                <path fill="#2f6bff" d="M26 16c0-5 3-8 7-8h7v23h-9c-4 0-8 1-12 3V16z"></path>
+                <path fill="#ffd23a" d="M22 14h4v16h-4z"></path>
+            </svg>
+            Book-e
+        </a>
+        <p class="menu__rol">Administración</p>
+        <nav>
+            <a class="is-activa" href="#libros">Libros</a>
+            <a href="index.html">Ver la tienda</a>
+        </nav>
+    </aside>
+
+    <div class="cuerpo">
+        <header class="barra">
+            <div class="quien">
+                <span class="quien__icono" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"></circle><path d="M5 19c1.4-3 3.8-4.5 7-4.5S17.6 16 19 19"></path></svg>
+                </span>
+                <span class="quien__datos">
+                    <strong id="nombre">—</strong>
+                    <span id="rol">Administrador</span>
+                </span>
+            </div>
+            <button type="button" id="salir">Cerrar sesión</button>
+        </header>
+
+        <main id="libros">
+            <h1>Libros</h1>
+            <form class="filtros" id="filtros">
+                <label class="buscar">
+                    Buscar
+                    <input type="search" id="buscar" placeholder="Título o autor" autocomplete="off">
+                </label>
+                <label>
+                    Tipo
+                    <select id="filtro-tipo">
+                        <option value="">Todos</option>
+                        <option value="Libro">Libros</option>
+                        <option value="Comic">Cómics</option>
+                    </select>
+                </label>
+                <label>
+                    Origen
+                    <select id="filtro-origen">
+                        <option value="">Todos</option>
+                        <option value="Nacional">Nacional</option>
+                        <option value="Extranjero">Extranjero</option>
+                    </select>
+                </label>
+                <label>
+                    Autor
+                    <select id="filtro-autor">
+                        <option value="">Todos</option>
+                    </select>
+                </label>
+                <label>
+                    Categoría
+                    <select id="filtro-categoria">
+                        <option value="">Todas</option>
+                    </select>
+                </label>
+                <button type="button" id="limpiar">Limpiar</button>
+            </form>
+            <p class="conteo" id="conteo"></p>
+            <div class="tabla-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="filas">
+                        <tr><td colspan="4">Cargando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav class="paginacion" id="paginacion" aria-label="Páginas del catálogo"></nav>
+        </main>
+    </div>
+
+    <script src="dist/js/api.js"></script>
+    <script src="dist/js/admin.js?v=3"></script>
+</body>
+</html>

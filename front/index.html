@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-e | Librería virtual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/style.css?v=12">
+    <link rel="stylesheet" href="dist/css/mobile.css?v=5">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header id="inicio">
+    <a class="logo" href="index.html">
+        <svg viewBox="0 0 48 40" aria-hidden="true">
+            <path fill="#ff5a36" d="M8 8h14c4 0 7 3 7 8v18c-4-2-8-3-12-3H8V8z"></path>
+            <path fill="#2f6bff" d="M26 16c0-5 3-8 7-8h7v23h-9c-4 0-8 1-12 3V16z"></path>
+            <path fill="#ffd23a" d="M22 14h4v16h-4z"></path>
+        </svg>
+        <h2>Book-e</h2>
+    </a>
+
+    <label class="buscador">
+        <input type="search" id="buscador" placeholder="Buscar por título o autor" autocomplete="off">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4 4"></path></svg>
+    </label>
+
+    <div class="usuario">
+        <button type="button" class="icono" aria-label="Favoritos">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z"></path></svg>
+        </button>
+        <button type="button" class="icono" aria-label="Carrito">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h15l-1.5 8h-12z"></path><path d="M6 7L5 4H2"></path><circle cx="9" cy="19" r="1.4"></circle><circle cx="17" cy="19" r="1.4"></circle></svg>
+        </button>
+        <div class="cuenta-menu" id="cuenta-menu">
+            <a class="cuenta" id="cuenta" href="login.html">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"></circle><path d="M5 19c1.4-3 3.8-4.5 7-4.5S17.6 16 19 19"></path></svg>
+                <span class="cuenta__texto">
+                    <span id="cuenta-nombre">Cuenta</span>
+                    <span class="cuenta__rol" id="cuenta-rol" hidden></span>
+                </span>
+            </a>
+            <div class="cuenta__panel" id="cuenta-panel" hidden>
+                <a id="cuenta-panel-admin" href="admin.html" hidden>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></svg>
+                    Panel
+                </a>
+                <button type="button" id="cuenta-salir">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6V5a2 2 0 0 1 2-2h8v18h-8a2 2 0 0 1-2-2v-1"></path><path d="M13 12H3"></path><path d="M6 9L3 12l3 3"></path></svg>
+                    Salir
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- SECCION SUPERIOR -->
+<section class="principal">
+
+    <div class="mas-vendido">
+        <h3>Más vendido</h3>
+
+        <div class="libro-destacado" id="libro-destacado">
+            <p>Cargando...</p>
+        </div>
+    </div>
+
+    <div class="novedades" id="novedades">
+        <h3>Novedades</h3>
+
+        <div class="carrusel" id="carrusel">
+            <div class="carrusel__ventana">
+                <button type="button" class="carrusel__flecha carrusel__flecha--izq" aria-label="Anterior">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5L9 12l5.5 5.5"></path></svg>
+                </button>
+                <figure class="is-activa">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=1400&q=80" alt="Un libro rojo recién editado, de pie sobre una mesa">
+                    <figcaption>
+                        <span>Recién llegados</span>
+                        <strong>1984, Frankenstein y La tregua entran esta semana</strong>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1400&q=80" alt="Sala de lectura de una biblioteca antigua, con lámparas verdes">
+                    <figcaption>
+                        <span>Ediciones clásicas</span>
+                        <strong>Don Quijote, Hamlet y Orgullo y prejuicio</strong>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80" alt="Mesa de colores con útiles y un libro infantil abierto">
+                    <figcaption>
+                        <span>Para chicos</span>
+                        <strong>Matilda, Pinocho y El Principito, para leer juntos</strong>
+                    </figcaption>
+                </figure>
+                <button type="button" class="carrusel__flecha carrusel__flecha--der" aria-label="Siguiente">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5L15 12l-5.5 5.5"></path></svg>
+                </button>
+            </div>
+            <div class="carrusel__puntos" role="tablist" aria-label="Diapositivas">
+                <button type="button" class="is-activa" aria-label="Diapositiva 1"></button>
+                <button type="button" aria-label="Diapositiva 2"></button>
+                <button type="button" aria-label="Diapositiva 3"></button>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- BANNERS -->
+<section class="banners">
+
+    <article class="banner banner--infantil">
+        <div>
+            <span class="banner__etiqueta">Colección</span>
+            <p>Explora nuestra selección</p>
+            <strong>de libros infantiles</strong>
+        </div>
+        <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=80" alt="Libros abiertos sobre una mesa">
+    </article>
+
+    <article class="banner banner--descuento">
+        <div>
+            <span class="banner__etiqueta">Para librerías y colegios</span>
+            <strong>14% <small>de descuento</small></strong>
+            <p>en libros infantiles y juveniles</p>
+        </div>
+    </article>
+
+</section>
+
+<!-- PRODUCTOS -->
+<section class="contenido" id="catalogo">
+
+    <aside>
+
+        <h2>Filtros</h2>
+
+        <div id="filtros">
+            <section class="grupo-filtro">
+                <h3>Tipo de libro</h3>
+                <ul>
+                    <li><button type="button" data-filtro="tipo" data-valor="Libro">Libros</button></li>
+                    <li><button type="button" data-filtro="tipo" data-valor="Comic">Cómics</button></li>
+                </ul>
+            </section>
+
+            <section class="grupo-filtro">
+                <h3>Selección</h3>
+                <ul>
+                    <li><button type="button" data-filtro="en_oferta" data-valor="1">Ofertas</button></li>
+                    <li><button type="button" data-filtro="novedad" data-valor="1">Novedades</button></li>
+                    <li><button type="button" data-filtro="mas_vendido" data-valor="1">Más vendidos</button></li>
+                    <li><button type="button" data-filtro="recomendado" data-valor="1">Recomendados</button></li>
+                </ul>
+            </section>
+
+            <section class="grupo-filtro">
+                <h3>Origen</h3>
+                <ul>
+                    <li><button type="button" data-filtro="origen" data-valor="Nacional">Nacional</button></li>
+                    <li><button type="button" data-filtro="origen" data-valor="Extranjero">Extranjero</button></li>
+                </ul>
+            </section>
+        </div>
+
+        <section class="grupo-filtro">
+            <h3>Autor</h3>
+            <div class="selector">
+                <span class="visually-hidden">Elegir autor</span>
+                <select id="filtro-autor">
+                    <option value="">Elegir autor</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="grupo-filtro">
+            <h3>Año</h3>
+            <div class="selector">
+                <span class="visually-hidden">Elegir año</span>
+                <select id="filtro-anio">
+                    <option value="">Elegir año</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="grupo-filtro">
+            <h3>Categoría</h3>
+            <div class="selector">
+                <span class="visually-hidden">Elegir categoría</span>
+                <select id="filtro-categoria">
+                    <option value="">Elegir categoría</option>
+                </select>
+            </div>
+        </section>
+
+        <button type="button" class="limpiar" id="limpiar-filtros">Limpiar filtros</button>
+
+    </aside>
+
+    <main>
+
+        <div class="titulo-productos">
+            <h2>Productos</h2>
+            <div class="titulo-productos__meta">
+                <p id="contador">0 Artículos</p>
+                <label class="selector selector--chico">
+                    <span class="visually-hidden">Orden</span>
+                    <select id="orden">
+                        <option value="">Ordenar</option>
+                        <option value="precio">Más barato</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <div class="productos" id="productos"></div>
+        <nav class="paginacion" id="paginacion" aria-label="Páginas del catálogo"></nav>
+
+    </main>
+
+</section>
+
+<footer class="pie">
+    <div class="pie__marca">
+        <strong>Book-e</strong>
+        <p>Librería virtual. Títulos para leer, regalar y coleccionar.</p>
+    </div>
+    <div class="pie__col">
+        <strong>Tienda</strong>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#novedades">Novedades</a>
+        <a href="#catalogo">Infantiles</a>
+    </div>
+    <div class="pie__col">
+        <strong>Ayuda</strong>
+        <a href="#inicio">Preguntas frecuentes</a>
+        <a href="#inicio">Envíos</a>
+        <a href="#inicio">Devoluciones</a>
+    </div>
+    <form class="pie__news" id="form-news">
+        <p>Suscribite para recibir novedades sobre nuestros libros</p>
+        <div>
+            <input type="email" placeholder="Email" aria-label="Email" required>
+            <button type="submit">Suscribirse</button>
+        </div>
+        <p class="pie__aviso" id="aviso-news" hidden></p>
+    </form>
+</footer>
+
+<script src="dist/js/api.js"></script>
+<script src="dist/js/script.js?v=9"></script>
+</body>
+
+</html>

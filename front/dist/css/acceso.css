@@ -1,0 +1,245 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
+    background: #f4f6fb;
+    color: #1d2433;
+}
+
+body.pagina-login {
+    padding: 28px;
+    background:
+        linear-gradient(165deg, rgba(231, 238, 252, 0.78), rgba(47, 107, 255, 0.45)),
+        url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1800&q=80") center / cover no-repeat fixed;
+}
+
+.pagina-login .escena {
+    width: min(980px, 100%);
+    min-height: min(620px, calc(100vh - 56px));
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 28px 70px rgba(28, 39, 94, 0.16);
+}
+
+.pagina-login .panel {
+    padding: 52px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pagina-login .marca svg {
+    width: 42px;
+    height: 36px;
+    display: block;
+}
+
+.pagina-login h1 {
+    margin: 22px 0 8px;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.pagina-login .bajada {
+    max-width: 280px;
+}
+
+.pagina-login form {
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.pagina-login label {
+    font-weight: 500;
+    color: #667085;
+}
+
+.pagina-login input {
+    border: 0;
+    border-bottom: 1.5px solid #d5dbe8;
+    border-radius: 0;
+    padding: 8px 2px 10px;
+    background: transparent;
+}
+
+.pagina-login input:focus {
+    outline: none;
+    border-bottom-color: #2741f5;
+}
+
+.pagina-login .botones {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.pagina-login .botones button,
+.pagina-login .botones .enlace {
+    flex: 1;
+    border-radius: 999px;
+    padding: 12px 16px;
+}
+
+.pagina-login .demo {
+    margin-top: 28px;
+    padding-top: 0;
+    border-top: 0;
+    font-size: 13px;
+}
+
+.pagina-login .lado {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px 40px;
+    background:
+        linear-gradient(165deg, rgba(47, 107, 255, 0.62), rgba(39, 65, 245, 0.42)),
+        url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1400&q=80") center / cover no-repeat;
+}
+
+.pagina-login .lado nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+}
+
+.pagina-login .lado a {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.pagina-login .sello {
+    width: 168px;
+    height: 168px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    background: white;
+    border-radius: 28px;
+    box-shadow: 0 18px 40px rgba(16, 24, 64, 0.18);
+}
+
+.pagina-login .sello svg {
+    width: 96px;
+    height: 80px;
+}
+
+@media (max-width: 800px) {
+    body.pagina-login {
+        padding: 16px;
+    }
+
+    .pagina-login .escena {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina-login .panel {
+        padding: 32px 24px;
+    }
+
+    .pagina-login .lado {
+        min-height: 280px;
+        order: -1;
+    }
+}
+
+.tarjeta {
+    width: min(440px, 100%);
+    background: white;
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 16px 40px rgba(28, 39, 94, 0.08);
+}
+
+.marca {
+    color: #2741f5;
+    font-weight: 800;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+h1 {
+    margin: 18px 0 8px;
+    font-size: 28px;
+}
+
+.bajada, .rol {
+    color: #667085;
+    line-height: 1.45;
+}
+
+form {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input {
+    border: 1px solid #e7e9f2;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font: inherit;
+}
+
+button, .enlace {
+    border: 0;
+    border-radius: 999px;
+    background: #2741f5;
+    color: white;
+    padding: 12px 16px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.enlace {
+    background: white;
+    color: #2741f5;
+    border: 1px solid #d9def2;
+}
+
+.error {
+    color: #b42318;
+    font-size: 14px;
+}
+
+.demo {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid #eef0f6;
+    color: #667085;
+    font-size: 14px;
+    display: grid;
+    gap: 6px;
+}
+
+.acciones {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.rol {
+    margin-top: 12px;
+    font-weight: 700;
+    color: #2741f5;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar | Book-e</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/acceso.css?v=4">
+</head>
+<body class="pagina-login">
+    <main class="escena">
+        <section class="panel">
+            <a class="marca" href="index.html" aria-label="Book-e">
+                <svg viewBox="0 0 48 40" aria-hidden="true">
+                    <path fill="#ff5a36" d="M8 8h14c4 0 7 3 7 8v18c-4-2-8-3-12-3H8V8z"></path>
+                    <path fill="#2f6bff" d="M26 16c0-5 3-8 7-8h7v23h-9c-4 0-8 1-12 3V16z"></path>
+                    <path fill="#ffd23a" d="M22 14h4v16h-4z"></path>
+                </svg>
+            </a>
+            <h1>Book-e</h1>
+            <p class="bajada">Bienvenido. Entrá a tu cuenta.</p>
+
+            <form id="form-login">
+                <label>
+                    Email
+                    <input type="email" id="email" name="email" autocomplete="username" required>
+                </label>
+                <label>
+                    Clave
+                    <input type="password" id="clave" name="clave" autocomplete="current-password" required>
+                </label>
+                <p class="error" id="error" hidden></p>
+                <div class="botones">
+                    <button type="submit">Entrar</button>
+                    <a class="enlace" href="index.html">Ir a la tienda</a>
+                </div>
+            </form>
+
+            <aside class="demo">
+                <p><strong>Administrador:</strong> admin@booke.com / Admin123</p>
+                <p><strong>Usuario:</strong> usuario@booke.com / Usuario123</p>
+            </aside>
+        </section>
+
+        <aside class="lado">
+            <nav>
+                <a href="index.html#catalogo">Catálogo</a>
+                <a href="index.html#novedades">Novedades</a>
+                <a href="index.html">Tienda</a>
+            </nav>
+            <div class="sello">
+                <svg viewBox="0 0 48 40" aria-hidden="true">
+                    <path fill="#ff5a36" d="M8 8h14c4 0 7 3 7 8v18c-4-2-8-3-12-3H8V8z"></path>
+                    <path fill="#2f6bff" d="M26 16c0-5 3-8 7-8h7v23h-9c-4 0-8 1-12 3V16z"></path>
+                    <path fill="#ffd23a" d="M22 14h4v16h-4z"></path>
+                </svg>
+            </div>
+        </aside>
+    </main>
+    <script src="dist/js/api.js"></script>
+    <script src="dist/js/login.js?v=2"></script>
+</body>
+</html>
