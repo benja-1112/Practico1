@@ -11,6 +11,8 @@ const catalogo = {
     pagina: 1
 };
 
+let sesionAbierta = false;
+
 document.addEventListener('DOMContentLoaded', iniciar);
 
 async function iniciar() {
@@ -67,6 +69,9 @@ async function iniciar() {
         aviso.textContent = 'Pronto vas a poder suscribirte desde acá.';
     });
 
+    document.getElementById('productos').addEventListener('click', comprar);
+    armarMenuCarrito();
+
     document.getElementById('paginacion').addEventListener('click', (evento) => {
         const boton = evento.target.closest('button');
         if (!boton || boton.disabled) return;
@@ -93,6 +98,8 @@ async function pintarCuenta() {
     const sesion = await API.request('/sesion');
     if (!sesion || sesion.status !== 'ok' || !sesion.data) return;
 
+    sesionAbierta = true;
+
     nombre.textContent = sesion.data.nombre_completo;
     rol.textContent = sesion.data.rol;
     rol.hidden = false;
@@ -109,6 +116,7 @@ async function pintarCuenta() {
 
     enlace.addEventListener('click', (evento) => {
         evento.preventDefault();
+        cerrarPanelCarrito();
         const abrir = panel.hidden;
         panel.hidden = !abrir;
         enlace.setAttribute('aria-expanded', String(abrir));
@@ -124,8 +132,10 @@ async function pintarCuenta() {
 
     salir.addEventListener('click', async () => {
         await API.request('/logout', 'POST');
+        sessionStorage.removeItem('booke-carrito');
         location.reload();
     });
+    pintarCarrito();
 }
 
 function limpiarFiltros() {
@@ -295,9 +305,138 @@ function cardLibro(libro) {
             <h3 class="card__titulo">${esc(libro.titulo)}</h3>
             <p class="card__autor">${esc(libro.nombre_autor || 'Autor sin cargar')}</p>
             <p class="card__precio">${precio(libro.precio)}</p>
-            <button type="button" class="btn-detalles">Más detalles</button>
+            <button type="button" class="btn-comprar" data-id="${esc(libro.id_libro)}">Comprar</button>
         </article>
     `;
+}
+
+async function comprar(evento) {
+    const boton = evento.target.closest('.btn-comprar');
+    if (!boton) return;
+
+    const sesion = await API.request('/sesion');
+    if (!sesion || sesion.status !== 'ok' || !sesion.data) {
+        location.href = 'login.html';
+        return;
+    }
+
+    const libro = catalogo.libros.find((item) => String(item.id_libro) === boton.dataset.id);
+    if (libro) guardarEnCarrito(libro);
+    pintarCarrito();
+}
+
+function guardarEnCarrito(libro) {
+    const items = leerCarrito();
+    const id = String(libro.id_libro);
+    const ya = items.find((item) => item.id === id);
+    if (ya) {
+        ya.cantidad += 1;
+    } else {
+        items.push({
+            id,
+            titulo: libro.titulo,
+            autor: libro.nombre_autor || '',
+            precio: libro.precio,
+            imagen: libro.imagen || '',
+            cantidad: 1
+        });
+    }
+    sessionStorage.setItem('booke-carrito', JSON.stringify(items));
+}
+
+function quitarDelCarrito(id) {
+    const items = leerCarrito().filter((item) => item.id !== id);
+    sessionStorage.setItem('booke-carrito', JSON.stringify(items));
+    pintarCarrito();
+}
+
+function leerCarrito() {
+    try {
+        const datos = JSON.parse(sessionStorage.getItem('booke-carrito'));
+        return Array.isArray(datos) ? datos : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function armarMenuCarrito() {
+    const menu = document.getElementById('carrito-menu');
+    const boton = document.getElementById('carrito');
+    const panel = document.getElementById('carrito-panel');
+
+    boton.addEventListener('click', () => {
+        if (!sesionAbierta) {
+            location.href = 'login.html';
+            return;
+        }
+        const abrir = panel.hidden;
+        const cuenta = document.getElementById('cuenta-panel');
+        const enlace = document.getElementById('cuenta');
+        if (cuenta) cuenta.hidden = true;
+        if (enlace && enlace.getAttribute('aria-expanded') === 'true') {
+            enlace.setAttribute('aria-expanded', 'false');
+        }
+        panel.hidden = !abrir;
+        boton.setAttribute('aria-expanded', String(abrir));
+    });
+
+    panel.addEventListener('click', (evento) => {
+        const quitar = evento.target.closest('[data-quitar]');
+        if (!quitar) return;
+        evento.stopPropagation();
+        quitarDelCarrito(quitar.dataset.quitar);
+    });
+
+    document.addEventListener('click', (evento) => {
+        if (menu.contains(evento.target)) return;
+        cerrarPanelCarrito();
+    });
+    document.addEventListener('keydown', (evento) => {
+        if (evento.key === 'Escape') cerrarPanelCarrito();
+    });
+}
+
+function cerrarPanelCarrito() {
+    const panel = document.getElementById('carrito-panel');
+    const boton = document.getElementById('carrito');
+    if (!panel || !boton) return;
+    panel.hidden = true;
+    boton.setAttribute('aria-expanded', 'false');
+}
+
+function pintarCarrito() {
+    const aviso = document.getElementById('carrito-cantidad');
+    const boton = document.getElementById('carrito');
+    const panel = document.getElementById('carrito-panel');
+    const items = leerCarrito();
+    const total = items.reduce((suma, item) => suma + Number(item.cantidad || 0), 0);
+    aviso.textContent = String(total);
+    aviso.hidden = total === 0;
+    boton.setAttribute('aria-label', total === 0 ? 'Carrito' : 'Carrito, ' + total + (total === 1 ? ' libro' : ' libros'));
+
+    if (items.length === 0) {
+        panel.innerHTML = '<p class="carrito__vacio">El carrito está vacío.</p>';
+        return;
+    }
+
+    panel.innerHTML = `<ul class="carrito__lista">${items.map((item) => `
+        <li class="carrito__item">
+            ${tapaCarrito(item)}
+            <div>
+                <strong>${esc(item.titulo)}</strong>
+                <span>${esc(item.autor)}${item.cantidad > 1 ? ' · ' + item.cantidad : ''} · ${precio(item.precio)}</span>
+            </div>
+            <button type="button" class="carrito__quitar" data-quitar="${esc(item.id)}">Quitar</button>
+        </li>
+    `).join('')}</ul>`;
+}
+
+function tapaCarrito(item) {
+    if (!item.imagen) {
+        const letra = String(item.titulo || '?').trim().slice(0, 1).toUpperCase();
+        return `<div class="carrito__tapa" aria-hidden="true">${esc(letra)}</div>`;
+    }
+    return `<img src="${esc(item.imagen)}" alt="">`;
 }
 
 function tapa(libro, destacada) {

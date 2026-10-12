@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dist/css/style.css?v=12">
+    <link rel="stylesheet" href="dist/css/style.css?v=15">
     <link rel="stylesheet" href="dist/css/mobile.css?v=5">
 </head>
 
@@ -34,9 +34,13 @@
         <button type="button" class="icono" aria-label="Favoritos">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z"></path></svg>
         </button>
-        <button type="button" class="icono" aria-label="Carrito">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h15l-1.5 8h-12z"></path><path d="M6 7L5 4H2"></path><circle cx="9" cy="19" r="1.4"></circle><circle cx="17" cy="19" r="1.4"></circle></svg>
-        </button>
+        <div class="carrito-menu" id="carrito-menu">
+            <button type="button" class="icono icono--carrito" id="carrito" aria-label="Carrito" aria-expanded="false" aria-haspopup="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h15l-1.5 8h-12z"></path><path d="M6 7L5 4H2"></path><circle cx="9" cy="19" r="1.4"></circle><circle cx="17" cy="19" r="1.4"></circle></svg>
+                <span class="carrito__cantidad" id="carrito-cantidad" hidden>0</span>
+            </button>
+            <div class="carrito__panel" id="carrito-panel" hidden></div>
+        </div>
         <div class="cuenta-menu" id="cuenta-menu">
             <a class="cuenta" id="cuenta" href="login.html">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"></circle><path d="M5 19c1.4-3 3.8-4.5 7-4.5S17.6 16 19 19"></path></svg>
@@ -255,7 +259,7 @@
 </footer>
 
 <script src="dist/js/api.js"></script>
-<script src="dist/js/script.js?v=9"></script>
+<script src="dist/js/script.js?v=13"></script>
 </body>
 
 </html>
