@@ -6,7 +6,6 @@ const MAX_PAGINAS = 6;
 const catalogo = {
     libros: [],
     filtros: {},
-    orden: '',
     texto: '',
     pagina: 1
 };
@@ -55,12 +54,6 @@ async function iniciar() {
         aplicarSelect('id_categoria', evento.target.value);
     });
     document.getElementById('limpiar-filtros').addEventListener('click', limpiarFiltros);
-
-    document.getElementById('orden').addEventListener('change', (evento) => {
-        catalogo.orden = evento.target.value;
-        catalogo.pagina = 1;
-        cargarLibros();
-    });
 
     document.getElementById('form-news').addEventListener('submit', (evento) => {
         evento.preventDefault();
@@ -216,7 +209,6 @@ async function cargarLibros() {
     Object.entries(catalogo.filtros).forEach(([clave, valor]) => {
         if (valor) params.set(clave, valor);
     });
-    if (catalogo.orden) params.set('orden', catalogo.orden);
 
     const consulta = params.toString();
     const respuesta = await API.request('/libros' + (consulta ? '?' + consulta : ''));
